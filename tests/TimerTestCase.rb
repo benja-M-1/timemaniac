@@ -42,9 +42,7 @@ class TimerTestCase < Test::Unit::TestCase
 
     def test_get_elapsed_time
         timer = Timemaniac::Timer.new
-        timer.expects(:start_date).returns(Time.now - 3600)
-        timer.expects(:end_date).returns(Time.now + 3600)
-        assert_equal 'toto', timer.start_date
+        timer.stubs(:start_date => (Time.now - 3600), :end_date => (Time.now + 3600))
         assert_equal 7200, timer.get_elapsed_time
     end
 
