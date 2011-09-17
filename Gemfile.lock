@@ -1,0 +1,16 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (3.0.0)
+    ci_reporter (1.6.5)
+      builder (>= 2.1.2)
+    metaclass (0.0.1)
+    mocha (0.10.0)
+      metaclass (~> 0.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ci_reporter (~> 1.6.5)
+  mocha (~> 0.10.0)

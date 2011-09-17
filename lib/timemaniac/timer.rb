@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 module Timemaniac
 
     class Timer
@@ -24,38 +22,37 @@ module Timemaniac
         attr_accessor :elapsed_time
 
         def initialize
-            self.start_date = Time.now
-            self.end_date   = Time.now
-            self.status     = @@unstarted
+            @start_date = Time.now
+            @end_date   = Time.now
+            @status     = @@unstarted
         end
 
         # Starts the timer
         def start
-            if self.status != @@running
-                self.status = @@running
+            if @status != @@running
+                @status = @@running
             end
         end
         
         # Pauses the timer
         def pause
-            if self.status == @@running
-                self.status = @@paused
-                self.end_date = Time.now
+            if @status == @@running
+                @status = @@paused
+                @end_date = Time.now
             end
         end
 
         # Stops the timer
         def stop
-            if self.status != @@stopped
-                self.status = @@stopped
-                self.end_date = Time.now
+            if @status != @@stopped
+                @status = @@stopped
+                @end_date = Time.now
             end
         end
 
         # Return elapsed time between start and end
         def get_elapsed_time
-            self.elapsed_time = (self.end_date - self.start_date).to_i
-            self.elapsed_time
+            @elapsed_time = (@end_date - @start_date).to_i
         end
 
         # Print elapsed time formated "d h:i:s"
@@ -66,10 +63,10 @@ module Timemaniac
             days  = hours / 24
             
 
-            string = sprintf "%ih:%im:%is" % [hours % 24, mins % 60, secs % 60]
+            string = "#{hours % 24}h:#{mins % 60}m:#{secs % 60}s"
 
             if days > 0
-                string = sprintf "%ij " % days + string
+                string = "#{days}j " + string
             end
 
             return string

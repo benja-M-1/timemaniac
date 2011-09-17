@@ -1,14 +1,8 @@
-#!/usr/bin/env ruby
-
-require 'rubygems'
+require 'Timemaniac'
 
 require File.dirname(__FILE__)+'/../src/Entry'
 
-require 'test/unit'
-require 'mocha'
-
-
-class EntryTestCase < Test::Unit::TestCase
+class EntryTestCase < Timemaniac::TestCase
 
     def test_add_entry
         entry = mock('entry') 

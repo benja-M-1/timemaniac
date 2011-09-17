@@ -1,14 +1,6 @@
-#!/usr/bin/env ruby
+require 'helper'
 
-require 'rubygems'
-
-require File.dirname(__FILE__)+'/../src/Timer'
-
-require 'test/unit'
-require 'mocha'
-
-
-class TimerTestCase < Test::Unit::TestCase
+class Timemaniac::TimerTestCase < Test::Unit::TestCase
 
     def test_start
         timer = Timemaniac::Timer.new
