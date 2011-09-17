@@ -4,9 +4,18 @@ GEM
     builder (3.0.0)
     ci_reporter (1.6.5)
       builder (>= 2.1.2)
+    columnize (0.3.4)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     metaclass (0.0.1)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
+    rbx-require-relative (0.0.5)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
 
 PLATFORMS
   ruby
@@ -14,3 +23,4 @@ PLATFORMS
 DEPENDENCIES
   ci_reporter (~> 1.6.5)
   mocha (~> 0.10.0)
+  ruby-debug (~> 0.10.4)
