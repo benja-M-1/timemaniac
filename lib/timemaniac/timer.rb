@@ -52,7 +52,6 @@ module Timemaniac
 
         # Return elapsed time between start and end
         def get_elapsed_time
-            debugger
             @elapsed_time = (@end_date - @start_date).to_i
         end
 

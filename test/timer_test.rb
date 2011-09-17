@@ -1,6 +1,6 @@
-require 'helper'
+require File.join(File.dirname(__FILE__), 'helper')
 
-class Timemaniac::TimerTestCase < Test::Unit::TestCase
+class TimerTestCase < Test::Unit::TestCase
 
     def test_start
         timer = Timemaniac::Timer.new
