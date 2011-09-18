@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'test/unit'
 begin
     Bundler.require(:default, :test)
 rescue Bundler::BundlerError => e
@@ -8,7 +9,6 @@ rescue Bundler::BundlerError => e
 
     exit e.status_code
 end
-require 'test/unit'
 
 $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 $:.unshift File.dirname(__FILE__)

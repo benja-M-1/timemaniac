@@ -7,12 +7,20 @@ module Timemaniac
         attr_accessor :description
         
         # Timer 
-        attr_accessor :timer
+        attr_reader :timer
 
         def initialize(name, description)
             @name = name
             @description = description
-            @timer = Timer.new
+            @timer = Timemaniac::Timer.new
+        end
+
+        def start
+            @timer.start
+        end
+
+        def stop
+            @timer.stop
         end
     end
 end

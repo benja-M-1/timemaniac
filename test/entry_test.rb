@@ -1,28 +1,30 @@
-require 'Timemaniac'
+require File.join(File.dirname(__FILE__), 'helper')
 
-require File.dirname(__FILE__)+'/../src/Entry'
-
-class EntryTestCase < Timemaniac::TestCase
-
-    def test_add_entry
-        entry = mock('entry') 
-        entry.expects(:name).returns('Testing')
-
-        entries = Timemaniac::Entries.new
-        entries.add_entry(entry)
-
-        assert_equal(1, entries.length)
-        assert_equal('Testing', entries.entries[0].name)
+class EntryTestCase < Test::Unit::TestCase
+    def test_initialize
+        entry = Timemaniac::Entry.new('Name', 'Description')
+        assert_equal('Name', entry.name, 'entry.name is Name')
+        assert_equal('Description', entry.description, 'entry.description is Description')
+        assert_instance_of(Timemaniac::Timer, entry.timer, 'entry.timer is Timemaniac::Timer')
+        assert_equal(Timemaniac::Timer.class_eval("@@unstarted"), entry.timer.status, 'entry.timer is not started yet')
     end
 
-    def test_remove_entry
-        hsh_entries = { 'one' => stubs(:entry => 'one'), 'two' => stubs(:entry, 'two') }
-        entries = Timemaniac::Entries.new
-        entries.subs(:entries).return(hsh_entries)
+    def test_initialize_raise_exception
+        assert_raise(ArgumentError) { Timemaniac::Entry.new }
+    end
 
-        assert_equal(2, entries.length)
+    def test_start
+        entry = Timemaniac::Entry.new('Name', 'Description')
+        entry.start
 
-        entries.remove_entry(1)
-        assert_equal(1, entries.length)
+        assert_equal(Timemaniac::Timer.class_eval("@@running"), entry.timer.status, 'entry.timer is running')
+    end
+
+    def test_stop
+        entry = Timemaniac::Entry.new('Name', 'Description')
+        entry.start
+        entry.stop
+
+        assert_equal(Timemaniac::Timer.class_eval("@@stopped"), entry.timer.status, 'entry.timer is stopped')
     end
 end

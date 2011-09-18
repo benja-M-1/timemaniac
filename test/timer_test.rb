@@ -10,17 +10,6 @@ class TimerTestCase < Test::Unit::TestCase
         assert_equal 1, timer.status
     end
 
-    def test_pause
-        timer = Timemaniac::Timer.new
-        assert_equal 0, timer.status 
-
-        timer.start
-        assert_equal 1, timer.status 
-
-        timer.pause
-        assert_equal 2, timer.status 
-    end
-
     def test_stop
         timer = Timemaniac::Timer.new
         assert_equal 0, timer.status 
@@ -29,7 +18,7 @@ class TimerTestCase < Test::Unit::TestCase
         assert_equal 1, timer.status 
 
         timer.stop
-        assert_equal 3, timer.status
+        assert_equal 2, timer.status
     end
 
     def test_get_elapsed_time

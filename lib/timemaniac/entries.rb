@@ -1,15 +1,18 @@
 module Timemaniac
 
     class Entries
-        attr_accessor :entries,
-                      :current
+        # List of entries
+        attr_accessor :entries
+
+        # Current entry
+        attr_reader   :current
 
         def initialize
             @entries = {}
             @current = nil
         end
 
-        def add_entry(entry)
+        def append(entry)
             @entries.store(entry.respond_to?(:name) ? entry.name : length, entry)
 
             if @current.nil?
@@ -17,12 +20,8 @@ module Timemaniac
             end
         end
 
-        def remove_entry(key)
-            if key.kind_of?(Integer)
-                @entries.delete(key) {|key| "Entry #{key} does not exists."}
-            else
-                raise ArgumentError.new("#{key} must be an integer")
-            end
+        def remove(key)
+            @entries.delete(key) {|key| "Entry #{key} does not exists."}
         end
 
         def purge
@@ -34,10 +33,10 @@ module Timemaniac
         end
 
         def [](key)
-            if key.kind_of?(Integer)
+            if @entries.key?(key)
                 return @entries[key]
             else
-                raise ArgumentError.new("#{key} must be an integer")
+                raise ArgumentError.new("#{key} does not exist.")
             end
         end
     end

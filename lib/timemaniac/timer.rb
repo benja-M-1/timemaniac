@@ -5,8 +5,7 @@ module Timemaniac
         # Statuses
         @@unstarted = 0
         @@running   = 1
-        @@paused    = 2
-        @@stopped   = 3 
+        @@stopped   = 2 
 
         # The date on which starts the timer
         attr_accessor :start_date
@@ -31,14 +30,8 @@ module Timemaniac
         def start
             if @status != @@running
                 @status = @@running
-            end
-        end
-        
-        # Pauses the timer
-        def pause
-            if @status == @@running
-                @status = @@paused
-                @end_date = Time.now
+            else
+                raise 'The timer is already started.'
             end
         end
 
@@ -47,6 +40,8 @@ module Timemaniac
             if @status != @@stopped
                 @status = @@stopped
                 @end_date = Time.now
+            else
+                raise 'The timer is not running.'
             end
         end
 
