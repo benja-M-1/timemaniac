@@ -1,0 +1,13 @@
+# Database configuration
+
+prod:
+    adapter: sqlite3
+    database: db/timemaniac.db
+
+development:
+    adapter: sqlite3
+    database: db/timemaniac_dev.db
+
+test:
+    adapter: sqlite3
+    database: db/timemaniac_test.db

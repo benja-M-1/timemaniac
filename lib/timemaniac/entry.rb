@@ -22,5 +22,9 @@ module Timemaniac
         def stop
             @timer.stop
         end
+
+        def to_s
+            "#{@name} : #{@description}"
+        end
     end
 end

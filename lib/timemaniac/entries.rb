@@ -39,6 +39,10 @@ module Timemaniac
                 raise ArgumentError.new("#{key} does not exist.")
             end
         end
+
+        def values
+            @entries.values
+        end
     end
 
 end
