@@ -1,16 +1,22 @@
 require 'test/unit/testsuite'
 require 'test/unit/ui/console/testrunner'
 
-require File.join(File.dirname(__FILE__), 'timer_test')
-require File.join(File.dirname(__FILE__), 'entry_test')
-require File.join(File.dirname(__FILE__), 'entries_test')
+require 'test/lib/timemaniac/timer_test'
+require 'test/lib/timemaniac/entry_test'
+require 'test/lib/timemaniac/entries_test'
+require 'test/lib/command_runner_test'
 
 class TimemaniacTests
     def self.suite
         suite = Test::Unit::TestSuite.new
-        suite << TimerTestCase.suite
-        suite << EntryTestCase.suite
-        suite << EntriesTestCase.suite
+
+        # Model
+        suite << TimerTest.suite
+        suite << EntryTest.suite
+        suite << EntriesTest.suite
+
+        # Commands
+        suite << CommandRunnerTest.suite
 
         return suite
     end

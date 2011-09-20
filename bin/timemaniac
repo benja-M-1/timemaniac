@@ -1,0 +1,22 @@
+#!/usr/bin/ruby
+# -*- coding: utf-8 -*-
+
+# Require gems
+require 'rubygems'
+require 'ruby-debug'
+require 'commandline/optionparser'
+include CommandLine
+
+# Require timemaniac classes
+require 'lib/command_runner'
+require 'lib/command_manager'
+require 'lib/command'
+require 'lib/timemaniac'
+
+runner = CommandRunner.new
+begin
+    runner.run(ARGV.clone)
+rescue Exception => e
+    puts e.to_s
+    exit 1
+end

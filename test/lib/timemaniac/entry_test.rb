@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), 'helper')
+require 'test/helper'
 
-class EntryTestCase < Test::Unit::TestCase
+class EntryTest < Test::Unit::TestCase
     def test_initialize
         entry = Timemaniac::Entry.new('Name', 'Description')
         assert_equal('Name', entry.name, 'entry.name is Name')

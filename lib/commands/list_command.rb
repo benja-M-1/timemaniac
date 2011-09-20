@@ -1,6 +1,3 @@
-require 'lib/command'
-require 'lib/timemaniac'
-
 class Commands::ListCommand < Command
     def initialize
         super('list', 'List tasks')

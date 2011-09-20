@@ -1,9 +1,9 @@
-require File.join(File.dirname(__FILE__), 'helper')
+require 'test/helper'
 
-class EntriesTestCase < Test::Unit::TestCase
+class EntriesTest < Test::Unit::TestCase
 
     def test_append_named
-        entry = mock('entry') 
+        entry = mock('entry')
         entry.expects(:name).returns('Testing').at_least_once
         entry.expects(:respond_to?).with(:name).returns(true)
 

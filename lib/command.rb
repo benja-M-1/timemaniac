@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'commandline/optionparser'
-include CommandLine
-
 class Command
     # Command name
     attr_reader :command
