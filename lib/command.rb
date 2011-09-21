@@ -1,6 +1,6 @@
 class Command
     # Command name
-    attr_reader :command
+    attr_reader :name
 
     # Command options
     attr_reader :options
@@ -15,10 +15,10 @@ class Command
     attr_accessor :program_name
 
     # Initializes a timemaniac command `timemaniac command options`
-    def initialize(command, summary=nil, defaults={})
-        @command = command
+    def initialize(name, summary=nil, defaults={})
+        @name    = name
         @summary = summary
-        @program_name = "timemaniac #{command}"
+        @program_name = "timemaniac #{name}"
         @defaults = defaults
         @options  = defaults.dup
     end
