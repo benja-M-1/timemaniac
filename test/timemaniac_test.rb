@@ -6,6 +6,7 @@ require 'test/lib/timemaniac/entry_test'
 require 'test/lib/timemaniac/entries_test'
 require 'test/lib/command_runner_test'
 require 'test/lib/command_manager_test'
+require 'test/lib/command_test'
 
 class TimemaniacTests
     def self.suite
@@ -19,6 +20,7 @@ class TimemaniacTests
         # Commands
         suite << CommandRunnerTest.suite
         suite << CommandManagerTest.suite
+        suite << CommandTest.suite
 
         return suite
     end
