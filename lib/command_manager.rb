@@ -33,7 +33,7 @@ class CommandManager
                 raise
             else
                 retried = true
-                require "timemaniac/commands/#{command_name}_command"
+                require "timemaniac/command/#{command_name}_command"
                 retry
             end
         end

@@ -1,28 +1,30 @@
-class Timemaniac::Entry
-  # Name of the entry
-  attr_accessor :name
+module Timemaniac
+  class Entry
+    include DataMapper::Resource
 
-  # Description of the entry
-  attr_accessor :description
+    property :id,          Serial
+    property :name,        String
+    property :description, Text
+    property :created_at,  DateTime
 
-  # Timer
-  attr_reader :timer
+    # Timer
+    attr_reader :timer
 
-  def initialize(name, description)
-    @name = name
-    @description = description
-    @timer = Timemaniac::Timer.new
-  end
-
-  def start
-    @timer.start
-  end
-
-  def stop
-    @timer.stop
-  end
-
-  def to_s
-    "#{@name} : #{@description}"
+  #  def initialize(name, description)
+  #    super
+  #    @timer = Timemaniac::Timer.new
+  #  end
+  #
+  #  def start
+  #    @timer.start
+  #  end
+  #
+  #  def stop
+  #    @timer.stop
+  #  end
+  #
+  #  def to_s
+  #    "#{@name} : #{@description}"
+  #  end
   end
 end

@@ -1,6 +1,7 @@
 source :rubygems
 
-gem "activerecord", "~> 3.1.0"
+gem "sqlite3", "~> 1.3.3"
+gem "datamapper", "~> 1.1.0"
 gem "OptionParser", "~> 0.5.1"
 
 group :test do

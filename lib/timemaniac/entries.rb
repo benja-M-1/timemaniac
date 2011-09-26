@@ -1,41 +1,43 @@
-class Timemaniac::Entries
-  # List of entries
-  attr_accessor :entries
+module Timemaniac
+  class Entries
+    # List of entries
+    attr_accessor :entries
 
-  # Current entry
-  attr_reader :current
+    # Current entry
+    attr_reader :current
 
-  def initialize
-    @entries = {}
-    @current = nil
-  end
-
-  def append(entry)
-    @entries.store(entry.respond_to?(:name) ? entry.name : length, entry)
-
-    if @current.nil?
-      @current = entry
+    def initialize
+      @entries = {}
+      @current = nil
     end
-  end
 
-  def remove(key)
-    @entries.delete(key) { |key| "Entry #{key} does not exists." }
-  end
+    def append(entry)
+      @entries.store(entry.respond_to?(:name) ? entry.name : length, entry)
 
-  def purge
-    @entries.clear
-  end
+      if @current.nil?
+        @current = entry
+      end
+    end
 
-  def length
-    @entries.length
-  end
+    def remove(key)
+      @entries.delete(key) { |key| "Entry #{key} does not exists." }
+    end
 
-  def [](key)
-    raise ArgumentError.new("#{key} does not exist.") unless @entries.key?(key)
-    @entries[key]
-  end
+    def purge
+      @entries.clear
+    end
 
-  def values
-    @entries.values
+    def length
+      @entries.length
+    end
+
+    def [](key)
+      raise ArgumentError.new("#{key} does not exist.") unless @entries.key?(key)
+      @entries[key]
+    end
+
+    def values
+      @entries.values
+    end
   end
 end

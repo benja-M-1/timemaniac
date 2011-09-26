@@ -28,8 +28,9 @@ class Command
     end
 end
 
+
+# Require every command here
+require 'lib/command/list_command'
+
 module Commands
 end
-
-# Require every commands here
-require 'lib/commands/list_command'

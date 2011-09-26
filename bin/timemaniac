@@ -4,14 +4,29 @@
 # Require gems
 require 'rubygems'
 require 'ruby-debug'
+require 'sqlite3'
+require 'datamapper'
 require 'commandline/optionparser'
 include CommandLine
+
+# Require ruby
+require 'yaml'
 
 # Require timemaniac classes
 require 'lib/command_runner'
 require 'lib/command_manager'
 require 'lib/command'
+
+# Build the model
+# Configure database access
+DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, 'sqlite3:db/timemaniac.db')
+
 require 'lib/timemaniac'
+
+DataMapper.finalize
+DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 runner = CommandRunner.new
 begin
