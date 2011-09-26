@@ -5,8 +5,9 @@ class CommandManager
     include Singleton
 
     def initialize
-        @commands = {}
-        register_command :list
+      @commands = {}
+      register_command :list
+      register_command :create
     end
 
     def register_command(command_obj)
@@ -33,7 +34,7 @@ class CommandManager
                 raise
             else
                 retried = true
-                require "timemaniac/command/#{command_name}_command"
+                require "command/#{command_name}_command"
                 retry
             end
         end

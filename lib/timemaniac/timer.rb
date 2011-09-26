@@ -12,11 +12,11 @@ module Timemaniac
     attr_accessor :end_date
 
     # The status of the timer
-    attr_accessor :status
+    attr_reader :status
 
     # The elapsed time between the
     # start and the and of the timer
-    attr_accessor :elapsed_time
+    attr_reader :elapsed_time
 
     def initialize
       @start_date = Time.now
@@ -26,21 +26,15 @@ module Timemaniac
 
     # Starts the timer
     def start
-      if @status != @@running
-        @status = @@running
-      else
-        raise 'The timer is already started.'
-      end
+      raise 'The timer is already started.' unless @status != @@running
+      @status = @@running
     end
 
     # Stops the timer
     def stop
-      if @status != @@stopped
-        @status = @@stopped
-        @end_date = Time.now
-      else
-        raise 'The timer is not running.'
-      end
+      raise 'The timer is not running.' unless @status != @@stopped
+      @status = @@stopped
+      @end_date = Time.now
     end
 
     # Return elapsed time between start and end
@@ -62,6 +56,10 @@ module Timemaniac
       end
 
       return string
+    end
+
+    def self.status(status)
+      raise "Unknown #{status} status." unless self.class_variables.include? "@@#{status}"
     end
   end
 end

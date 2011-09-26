@@ -6,15 +6,13 @@ module Commands
 
     def execute(args=[])
       entries = get_entries
-      puts entries.values
+      entries.each do |entry|
+        puts entry.to_s
+      end
     end
 
     def get_entries
-      entries = Timemaniac::Entries.new
-      entries.append(Timemaniac::Entry.new('Task one', 'Task one description'))
-      entries.append(Timemaniac::Entry.new('Task two', 'Task two description'))
-
-      return entries
+      entries = Timemaniac::Entry.all(:status => Timemaniac::Timer.status('stopped'))
     end
   end
 end
