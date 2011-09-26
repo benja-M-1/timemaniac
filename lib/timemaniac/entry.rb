@@ -10,21 +10,23 @@ module Timemaniac
     # Timer
     attr_reader :timer
 
-  #  def initialize(name, description)
-  #    super
-  #    @timer = Timemaniac::Timer.new
-  #  end
-  #
-  #  def start
-  #    @timer.start
-  #  end
-  #
-  #  def stop
-  #    @timer.stop
-  #  end
-  #
-  #  def to_s
-  #    "#{@name} : #{@description}"
-  #  end
+    def initialize(attributes={})
+      super attributes
+      @timer = Timemaniac::Timer.new
+    end
+
+    def start
+      @timer.start
+    end
+
+    def stop
+      @timer.stop
+    end
+
+    def to_s
+      "#{@name} : #{@description}"
+    end
   end
 end
+
+Timemaniac::Entry.auto_upgrade!
