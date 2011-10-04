@@ -14,6 +14,8 @@ class Command
     # Command name for command-line invocation
     attr_accessor :program_name
 
+    attr_accessor :parser
+
     # Initializes a timemaniac command `timemaniac command options`
     def initialize(name, summary=nil, defaults={})
         @name    = name
@@ -21,6 +23,13 @@ class Command
         @program_name = "timemaniac #{name}"
         @defaults = defaults
         @options  = defaults.dup
+
+        configure
+    end
+
+    def configure
+      @parser = OptionParser.new ('Timemaniac') if @parser.nil?
+      @parser.on('-h', '--help', 'This the help')
     end
 
     def execute
