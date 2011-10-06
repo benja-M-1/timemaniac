@@ -28,7 +28,7 @@ class Command
     end
 
     def configure
-      @parser = OptionParser.new ('Timemaniac') if @parser.nil?
+      @parser = OptionParser.new('Timemaniac') if @parser.nil?
       @parser.on('-h', '--help', 'This the help')
     end
 
