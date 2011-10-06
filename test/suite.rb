@@ -3,7 +3,6 @@ require 'test/unit/ui/console/testrunner'
 
 require 'test/lib/timemaniac/timer_test'
 require 'test/lib/timemaniac/entry_test'
-require 'test/lib/timemaniac/entries_test'
 require 'test/lib/command_runner_test'
 require 'test/lib/command_manager_test'
 require 'test/lib/command_test'
@@ -15,7 +14,6 @@ class TimemaniacTests
         # Model
         suite << TimerTest.suite
         suite << EntryTest.suite
-        suite << EntriesTest.suite
 
         # Commands
         suite << CommandRunnerTest.suite

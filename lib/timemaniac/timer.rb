@@ -1,9 +1,10 @@
+# @todo Read again the chapter about class variables in "Eloquent Ruby"
 module Timemaniac
   class Timer
     # Statuses
     @@unstarted = 0
-    @@running = 1
-    @@stopped = 2
+    @@running   = 1
+    @@stopped   = 2
 
     # The date on which starts the timer
     attr_accessor :start_date
@@ -55,7 +56,7 @@ module Timemaniac
         string = "#{days}j " + string
       end
 
-      return string
+      string
     end
 
     def self.status(status)

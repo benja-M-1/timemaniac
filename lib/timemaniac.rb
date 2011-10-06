@@ -9,7 +9,6 @@ require 'time'
 # Internal requirements
 require 'timemaniac/timer'
 require 'timemaniac/entry'
-require 'timemaniac/entries'
 
 # Timemaniac classes
 module Timemaniac

@@ -1,3 +1,9 @@
+# db
+/db
+
+# logs
+/log
+
 # IDE files
 .idea
 nbproject

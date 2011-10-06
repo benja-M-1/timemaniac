@@ -32,14 +32,15 @@ class Command
       @parser.on('-h', '--help', 'This the help')
     end
 
-    def execute
+    def run(args={})
+      @parser.parse!
+      execute args
+    end
+
+    def execute(args={})
         raise 'Timemaniac command has no actions.'
     end
 end
-
-
-# Require every command here
-require 'lib/command/list_command'
 
 module Commands
 end

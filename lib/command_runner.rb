@@ -10,6 +10,6 @@ class CommandRunner
     command = args.shift
 
     manager = @command_manager_class.instance
-    manager[command].execute(args)
+    manager[command].run(args)
   end
 end

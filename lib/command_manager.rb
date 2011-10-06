@@ -5,9 +5,10 @@ class CommandManager
     include Singleton
 
     def initialize
-      @commands = {}
-      register_command :list
-      register_command :create
+        @commands = {}
+        register_command :list
+        register_command :create
+        register_command :start
     end
 
     def register_command(command_obj)
