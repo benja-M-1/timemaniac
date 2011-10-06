@@ -1,7 +1,6 @@
 require 'test/unit/testsuite'
 require 'test/unit/ui/console/testrunner'
 
-require 'test/lib/timemaniac/timer_test'
 require 'test/lib/timemaniac/entry_test'
 require 'test/lib/command_runner_test'
 require 'test/lib/command_manager_test'
@@ -12,7 +11,6 @@ class TimemaniacTests
         suite = Test::Unit::TestSuite.new
 
         # Model
-        suite << TimerTest.suite
         suite << EntryTest.suite
 
         # Commands

@@ -7,7 +7,6 @@ require 'yaml'
 require 'time'
 
 # Internal requirements
-require 'timemaniac/timer'
 require 'timemaniac/entry'
 
 # Timemaniac classes
