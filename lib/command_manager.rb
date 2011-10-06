@@ -9,6 +9,7 @@ class CommandManager
         register_command :list
         register_command :create
         register_command :start
+        register_command :stop
     end
 
     def register_command(command_obj)
