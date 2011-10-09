@@ -23,15 +23,15 @@ FileUtils.mkdir_p(File.dirname(db_file)) unless File.directory?(File.dirname(db_
 
 DataMapper::Logger.new('log/timemaniac.log', :debug)
 DataMapper.setup(:default, "sqlite3://#{db_file}")
-
+#DataMapper::Model.raise_on_save_failure = true
 require 'lib/timemaniac'
 
-DataMapper.finalize
+DataMapper.auto_upgrade!
 
 runner = CommandRunner.new
 begin
-    runner.run(ARGV.clone)
+  runner.run(ARGV.clone)
 rescue Exception => e
-    puts e.to_s
-    exit 1
+  puts e.to_s
+  exit 1
 end
