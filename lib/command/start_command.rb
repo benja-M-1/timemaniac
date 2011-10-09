@@ -17,6 +17,8 @@ module Commands
       raise OptionParser::MissingArgument.new('You have to provide a name to your entry.') if @options[:name].nil?
 
       entry = Timemaniac::Entry.first(:name => @options[:name])
+                                                               debugger
+      raise "Entry #{@options[:name]} not found." if entry.nil?
       entry.start
       entry.save
 

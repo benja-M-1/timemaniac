@@ -25,15 +25,14 @@ module Commands
       raise OptionParser::MissingArgument.new('You have to provide a name to your entry.') if @options[:name].nil?
 
       entry = Timemaniac::Entry.create(:name => @options[:name], :description => @options[:description])
-      entry.save
+      if entry.saved?
+        puts "#{entry.name} has been created."
 
-      puts "#{entry.name} has been created."
-
-      if @options[:start]
-        entry.start
-        puts "#{entry.name} is now running."
+        if @options[:start]
+          entry.start
+          puts "#{entry.name} is now running."
+        end
       end
-
     end
   end
 end
