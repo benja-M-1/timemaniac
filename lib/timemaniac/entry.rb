@@ -44,6 +44,7 @@ module Timemaniac
     # Return elapsed time between start and end
     # @return Integer
     def elapsed_time
+      raise "Can't count elapsed time" unless !@status.nil? && @status != :unstarted.to_s
       (@finished_at - @started_at).to_i
     end
 
