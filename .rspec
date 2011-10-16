@@ -1,0 +1,4 @@
+--color
+--format d
+--require spec_helper
+--pattern */*_spec.rb
