@@ -1,37 +1,3 @@
-#!/usr/bin/ruby
-# -*- coding: utf-8 -*-
+#!/usr/bin/env ruby
 
-# Require gems
-require 'rubygems'
-require 'ruby-debug'
-require 'sqlite3'
-require 'datamapper'
-
-# Require ruby
-require 'yaml'
-require 'optparse'
-
-# Require timemaniac classes
-require 'lib/command_runner'
-require 'lib/command_manager'
-require 'lib/command'
-
-# Build the model
-# Configure database access
-db_file = Dir.pwd + '/db/timemaniac.db'
-FileUtils.mkdir_p(File.dirname(db_file)) unless File.directory?(File.dirname(db_file))
-
-DataMapper::Logger.new('log/timemaniac.log', :debug)
-DataMapper.setup(:default, "sqlite3://#{db_file}")
-#DataMapper::Model.raise_on_save_failure = true
-require 'lib/timemaniac'
-
-DataMapper.auto_upgrade!
-
-runner = CommandRunner.new
-begin
-  runner.run(ARGV.clone)
-rescue Exception => e
-  puts e.to_s
-  exit 1
-end
+require "timemaniac"
