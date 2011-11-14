@@ -16,14 +16,15 @@ require 'timemaniac/command_manager'
 require 'timemaniac/command_runner'
 
 module Timemaniac
-    DB = nil
+    @db
     def self.setup
         file = File.new('db/config/database.yml').read
         settings = YAML::load(file)
         database = settings['default']
         logger   = Logger.new(settings['log'])
-        DB = Sequel.connect({:adapter => database['adapter'], :host => database['host'], :logger => logger})
+        @db = Sequel.connect({:adapter => database['adapter'], :host => database['host'], :logger => logger})
     end
+
 end
 
 Timemaniac.setup()

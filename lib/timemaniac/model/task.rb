@@ -19,7 +19,7 @@ module Timemaniac
             def initialize(name, description = nil)
                 @name = name
                 @description = description
-                @key = Digest::SHA1.hexadigest(@name + Time.now)
+                @key = Digest::SHA1.hexdigest(@name + Time.now.to_s)
                 @status = :unstarted
                 @elapsed_time = 0
             end
