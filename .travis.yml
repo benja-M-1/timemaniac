@@ -1,0 +1,9 @@
+# travis worker file
+rvm:
+    - 1.9.2
+    - 1.9.3 # Ruby version used for the development
+branches:
+    only:
+        - gem
+
+
