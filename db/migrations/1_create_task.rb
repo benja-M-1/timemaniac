@@ -1,4 +1,4 @@
-$:.push File.expand_path('../../lib', __FILE__)
+$:.push File.expand_path('../../../lib', __FILE__)
 
 require 'timemaniac'
 
@@ -6,7 +6,7 @@ Timemaniac.setup
 
 class TaskSchema < Sequel::Migration
     def up
-        create_table!(:task) do
+        create_table!(:tasks) do
             primary_key :id
             String   :key, :unique => true
             String   :name
