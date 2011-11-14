@@ -1,17 +1,17 @@
 describe Timemaniac::Model::Task do
     it "test Task's name method" do
-        task = Timemaniac::Model::Task.new "test"
-        task.name.should == "test"
+        task = Timemaniac::Model::Task.new('test')
+        task.name.should =~ /test/
     end
 
     it "test Task's description method" do
-        task = Timemaniac::Model::Task.new "test"
+        task = Timemaniac::Model::Task.new('test')
         task.description = "Lorem ipsum dolor blablabla..."
-        task.description.should == "Lorem ipsum dolor blablabla..."
+        task.description.should =~ /Lorem ipsum dolor blablabla.../
     end
 
     it "test Task's start method" do
-        task = Timemaniac::Model::Task.new "test" "description"
+        task = Timemaniac::Model::Task.new('test', 'description')
         task.status.should == :unstarted
         task.started_at.should be_nil
 
@@ -21,7 +21,7 @@ describe Timemaniac::Model::Task do
     end
 
     it "test Task's pause method" do
-        task = Timemaniac::Model::Task.new "test" "description"
+        task = Timemaniac::Model::Task.new('test', 'description')
         task.start
         task.pause
         task.status.should == :paused
@@ -29,7 +29,7 @@ describe Timemaniac::Model::Task do
     end
 
     it "test Task's stop method" do
-        task = Timemaniac::Model::Task.new "test" "description"
+        task = Timemaniac::Model::Task.new('test', 'description')
         task.start
         task.stop
         task.status.should == :stopped

@@ -1,7 +1,13 @@
+require "digest/sha1"
+
+# @author Benjamin Grandfond <benjamin.grandfond@gmail.com>
 module Timemaniac
     module Model
-        class Task
+        class Task < Sequel::Model
+            set_primary_key [:id, :name]
+
             attr_accessor :id
+            attr_accessor :key
             attr_accessor :name
             attr_accessor :description
 
@@ -11,8 +17,9 @@ module Timemaniac
             attr_reader   :elapsed_time
 
             def initialize(name, description = nil)
-                @name   = name
+                @name = name
                 @description = description
+                @key = Digest::SHA1.hexadigest(@name + Time.now)
                 @status = :unstarted
                 @elapsed_time = 0
             end

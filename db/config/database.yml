@@ -1,0 +1,9 @@
+default:
+    adapter: sqlite
+    host:    db/timemaniac.db
+    log:     log/timemaniac.log
+
+test:
+    adapter: sqlite
+    host:    memory
+    logg:    log/timemaniac_test.log

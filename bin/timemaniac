@@ -1,3 +1,13 @@
 #!/usr/bin/env ruby
 
-require "timemaniac"
+$:.push File.expand_path('../../lib', __FILE__)
+
+require 'timemaniac'
+
+runner = Timemaniac::CommandRunner.new
+begin
+  runner.run(ARGV.clone)
+rescue Exception => e
+  puts e.to_s
+  exit 1
+end

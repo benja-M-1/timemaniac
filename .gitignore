@@ -1,12 +1,8 @@
 # db
-/db
+/db/timemaniac.db
 
 # logs
 /log
 
 # coverage
 /coverage
-
-# IDE files
-.idea
-nbproject
